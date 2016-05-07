@@ -19,7 +19,7 @@
 <script src="<?php echo base_url() . "assets/js/"; ?>bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="<?php echo base_url() . "assets/js"; ?>select2/select2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() . "assets/js/"; ?>select2/select2.min.js"></script>
 
 <script type="text/javascript" src="<?php echo base_url() . "assets/css/"; ?>bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
 <script type="text/javascript" src="<?php echo base_url() . "assets/css/"; ?>bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
@@ -42,6 +42,7 @@
         Layout.init(); // init current layout
         Demo.init(); // init demo features
         FormSamples.init();
+        ComponentsEditors.init();
     });
 </script>
 <!-- END JAVASCRIPTS -->
