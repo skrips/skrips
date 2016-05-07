@@ -8,9 +8,7 @@ Class Ctl extends CI_Controller {
     }
 
     function index() {
-        $data['error'] = "";
-        $data['content'] = "defcont";
-        $this->load->view('skeleton', $data);
+        $this->load->view('login');
     }
 
     function view($v, $error = "") {
