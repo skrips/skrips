@@ -42,7 +42,7 @@
         <!-- BEGIN LOGIN -->
         <div class="content">
             <!-- BEGIN LOGIN FORM -->
-            <form class="login-form" action="index.html" method="post">
+            <form class="login-form" action="<?php echo base_url()."Ctl/priv";?>" method="post">
                 <h3 class="form-title">Sign In</h3>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>

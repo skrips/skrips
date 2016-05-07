@@ -11,6 +11,76 @@ Class Ctl extends CI_Controller {
         $this->load->view('login');
     }
 
+    function priv() {
+        $this->form_validation->set_rules('username', 'User Name', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->index();
+        } else {
+            $query = $this->Mtl->priv();
+            if ($query) { // if the user's validated...
+                if ($query->privillege == "common") {
+                    $data = array(
+                        'username' => $this->input->post('username'),
+                        'is_logged_in' => TRUE,
+                        'privillege' => "common"
+                    );
+                } elseif ($query->privillege == "superadmin") {
+                    $data = array(
+                        'username' => $this->input->post('username'),
+                        'is_logged_in' => TRUE,
+                        'privillege' => "superadmin"
+                    );
+                }
+                $this->session->set_userdata($data);
+                $priv = $this->session->userdata('privillege');
+                if ($priv == "superadmin") {
+                    redirect(base_url() . 'Ctl/admin', 'refresh');
+                    die();
+                } else {
+                    redirect(base_url() . 'Ctl/user', 'refresh');
+                    die();
+                }
+            } else { // incorrect username or password
+                //$this->index();
+                echo "xxx";
+            }
+        }
+    }
+    
+    function is_logged_in() {
+        $privillege = $this->session->userdata('privillege');
+        $username = $this->session->userdata('username');
+        $is_logged_in = $this->session->userdata('is_logged_in');
+        if (!isset($privillege) && $privillege != "superadmin" && !isset($username) && !isset($is_logged_in) && $is_logged_in != TRUE) {
+            header('location: ' . base_url() . 'Ctl/');
+            die();
+        }
+    }
+
+    function admin() {
+        $this->is_logged_in();
+        $data['sidebar'] = "sidebar";
+        $data['error'] = "";
+        $data['content'] = "defcont";
+        $this->load->view('skeleton', $data);
+    }
+
+    function user() {
+        $data['sidebar'] = "sidebar2";
+        $data['error'] = "";
+        $data['content'] = "defcont";
+        $this->load->view('skeleton', $data);
+    }
+    
+    function user_out() {
+        $this->session->unset_userdata('is_logged_in');
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('privillege');
+        $this->index();
+    }
+
     function view($v, $error = "") {
         $data['error'] = $error;
         $data['content'] = $v;
@@ -28,7 +98,7 @@ Class Ctl extends CI_Controller {
             $this->view('defcont', "<div class='note note-danger'>
             <h4 class='block'>Ups, ada kesalahan! Silahkan masukan kembali data anda</h4>
             </div>"
-                );
+            );
         } else {
             if ($this->Mtl->add_artikel()) {
                 $this->view('defcont', "<div class='note note-success'>
