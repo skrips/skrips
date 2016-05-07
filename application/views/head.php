@@ -13,6 +13,11 @@
     <link href="<?php echo base_url() . "assets/css/"; ?>bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url() . "assets/css/"; ?>uniform/css/uniform.default.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url() . "assets/css/"; ?>bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . "assets/css/"; ?>bootstrap-wysihtml5/bootstrap-wysihtml5.css"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . "assets/css/"; ?>bootstrap-markdown/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() . "assets/css/"; ?>bootstrap-summernote/summernote.css">
+
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL STYLES -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . "assets/css/"; ?>select2/select2.css"/>

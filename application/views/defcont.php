@@ -85,7 +85,7 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Isi</label>
                                         <div class="col-md-10">
-                                            <textarea class="form-control"></textarea>
+                                            <div name="summernote" id="summernote_1"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
