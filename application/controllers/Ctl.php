@@ -43,12 +43,11 @@ Class Ctl extends CI_Controller {
                     die();
                 }
             } else { // incorrect username or password
-                //$this->index();
-                echo "xxx";
+                $this->index();
             }
         }
     }
-    
+
     function is_logged_in() {
         $privillege = $this->session->userdata('privillege');
         $username = $this->session->userdata('username');
@@ -59,21 +58,55 @@ Class Ctl extends CI_Controller {
         }
     }
 
+    public function usrs() {
+        $privillege = $this->session->userdata('privillege');
+        $username = $this->session->userdata('username');
+        $is_logged_in = $this->session->userdata('is_logged_in');
+        //super admin
+        if (isset($privillege) && $privillege == "superadmin" && isset($username) && isset($is_logged_in) && $is_logged_in == TRUE) {
+            redirect(base_url() . 'Ctl/admin', 'refresh');
+            die();
+        } //user biasa
+        elseif (isset($privillege) && $privillege == "common" && isset($username) && isset($is_logged_in) && $is_logged_in == TRUE) {
+            redirect(base_url() . 'Ctl/user', 'refresh');
+            die();
+        } else {
+            $this->load->view('login');
+        }
+    }
+
     function admin() {
         $this->is_logged_in();
-        $data['sidebar'] = "sidebar";
-        $data['error'] = "";
-        $data['content'] = "defcont";
-        $this->load->view('skeleton', $data);
+        $privillege = $this->session->userdata('privillege');
+        $username = $this->session->userdata('username');
+        $is_logged_in = $this->session->userdata('is_logged_in');
+        if (isset($privillege) && $privillege == "common" && isset($username) && isset($is_logged_in) && $is_logged_in == TRUE) {
+            redirect(base_url() . 'Ctl/user', 'refresh');
+            die();
+        } else {
+            $data['sidebar'] = "sidebar";
+            $data['error'] = "";
+            $data['content'] = "defcont";
+            $this->load->view('skeleton', $data);
+        }
     }
 
     function user() {
-        $data['sidebar'] = "sidebar2";
-        $data['error'] = "";
-        $data['content'] = "defcont";
-        $this->load->view('skeleton', $data);
+        $this->is_logged_in();
+        $privillege = $this->session->userdata('privillege');
+        $username = $this->session->userdata('username');
+        $is_logged_in = $this->session->userdata('is_logged_in');
+        if (isset($privillege) && $privillege == "superadmin" && isset($username) && isset($is_logged_in) && $is_logged_in == TRUE) {
+            redirect(base_url() . 'Ctl/admin', 'refresh');
+            die();
+        } else {
+            $data['sidebar'] = "sidebar2";
+            $data['error'] = "";
+            $data['content'] = "defcont";
+            $this->load->view('skeleton', $data);
+        }
     }
-    
+
     function user_out() {
         $this->session->unset_userdata('is_logged_in');
         $this->session->unset_userdata('username');
