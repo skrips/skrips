@@ -52,6 +52,7 @@
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
                 <div class="col-md-12">
+                    <?php echo $error; ?>
                     <div class="portlet light bordered">
                         <div class="portlet-title">
                             <div class="caption">
@@ -66,32 +67,36 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Judul</label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="Enter title">
+                                            <input type="text" class="form-control" placeholder="Enter title" autocomplete="off" name="judul" required autofocus="TRUE">
                                             <span class="help-block">Masukkan Judul Artikel. </span>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Topik</label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="Enter topic">
+                                            <input type="text" class="form-control" placeholder="Enter topic" autocomplete="off" name="topik" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Akses</label>
                                         <div class="col-md-10">
-                                            <input type="text" class="form-control" placeholder="Enter title">
+                                            <div class="radio-list">
+                                                <label class="radio-inline"><input type="radio" name="akses" id="akses1" value="Private" checked> Private</label>
+                                                <label class="radio-inline"><input type="radio" name="akses" id="akses2" value="Public"> Public </label>
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Isi</label>
                                         <div class="col-md-10">
-                                            <div name="summernote" id="summernote_1"></div>
+                                            <div name="isi" id="summernote_1"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Sumber</label>
                                         <div class="col-md-10">
-                                            <input type="password" class="form-control" placeholder="Password">
+                                            <input type="password" class="form-control" placeholder="Article Source" autocomplete="off" name="sumber" required>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +104,7 @@
                                     <div class="row">
                                         <div class="col-md-offset-3 col-md-9">
                                             <button type="submit" class="btn green">Submit</button>
-                                            <button type="button" class="btn default">Cancel</button>
+                                            <button type="reset" class="btn default">Batal</button>
                                         </div>
                                     </div>
                                 </div>

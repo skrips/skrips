@@ -8,7 +8,7 @@
         <div class="clearfix">
         </div>
         <!-- BEGIN CONTAINER -->
-        <?php $this->load->view('defcont'); ?>
+        <?php $this->load->view($content); ?>
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <?php $this->load->view('footer'); ?>
