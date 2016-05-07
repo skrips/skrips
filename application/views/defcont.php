@@ -62,7 +62,7 @@
                         </div>
                         <div class="portlet-body form">
                             <!-- BEGIN FORM-->
-                            <form action="<?php base_url() . "Ctl/add_artikel" ?>" class="form-horizontal" method="POST">
+                            <form action="<?php echo base_url() . "Ctl/add_artikel"; ?>" method="POST" class="form-horizontal">
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Judul</label>
@@ -90,13 +90,13 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Isi</label>
                                         <div class="col-md-10">
-                                            <div name="isi" id="summernote_1"></div>
+                                            <textarea name="isi" id="summernote_1"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Sumber</label>
                                         <div class="col-md-10">
-                                            <input type="password" class="form-control" placeholder="Article Source" autocomplete="off" name="sumber" required>
+                                            <input type="text" class="form-control" placeholder="Article Source" autocomplete="off" name="sumber" required>
                                         </div>
                                     </div>
                                 </div>
