@@ -8,7 +8,20 @@ Class Ctl extends CI_Controller {
     }
 
     function index() {
-        $this->load->view('login');
+        $privillege = $this->session->userdata('privillege');
+        $username = $this->session->userdata('username');
+        $is_logged_in = $this->session->userdata('is_logged_in');
+        //super admin
+        if (isset($privillege) && $privillege == "superadmin" && isset($username) && isset($is_logged_in) && $is_logged_in == TRUE) {
+            redirect(base_url() . 'Ctl/admin', 'refresh');
+            die();
+        } //user biasa
+        elseif (isset($privillege) && $privillege == "common" && isset($username) && isset($is_logged_in) && $is_logged_in == TRUE) {
+            redirect(base_url() . 'Ctl/user', 'refresh');
+            die();
+        } else {
+            $this->load->view('login');
+        }
     }
 
     function priv() {
@@ -58,23 +71,6 @@ Class Ctl extends CI_Controller {
         }
     }
 
-    public function usrs() {
-        $privillege = $this->session->userdata('privillege');
-        $username = $this->session->userdata('username');
-        $is_logged_in = $this->session->userdata('is_logged_in');
-        //super admin
-        if (isset($privillege) && $privillege == "superadmin" && isset($username) && isset($is_logged_in) && $is_logged_in == TRUE) {
-            redirect(base_url() . 'Ctl/admin', 'refresh');
-            die();
-        } //user biasa
-        elseif (isset($privillege) && $privillege == "common" && isset($username) && isset($is_logged_in) && $is_logged_in == TRUE) {
-            redirect(base_url() . 'Ctl/user', 'refresh');
-            die();
-        } else {
-            $this->load->view('login');
-        }
-    }
-
     function admin() {
         $this->is_logged_in();
         $privillege = $this->session->userdata('privillege');
@@ -84,6 +80,7 @@ Class Ctl extends CI_Controller {
             redirect(base_url() . 'Ctl/user', 'refresh');
             die();
         } else {
+            $data['akun'] = $this->Mtl->get_akun();
             $data['sidebar'] = "sidebar";
             $data['error'] = "";
             $data['content'] = "defcont";
@@ -100,6 +97,7 @@ Class Ctl extends CI_Controller {
             redirect(base_url() . 'Ctl/admin', 'refresh');
             die();
         } else {
+            $data['akun'] = $this->Mtl->get_akun();
             $data['sidebar'] = "sidebar2";
             $data['error'] = "";
             $data['content'] = "defcont";

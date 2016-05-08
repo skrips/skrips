@@ -33,6 +33,12 @@ Class Mtl extends CI_Model {
             return $query->row();
         }
     }
+    
+    function get_akun(){
+        $username = $this->session->userdata('username');
+        $this->db->where('username',$username);
+        return $this->db->get('user')->row();
+    }
 
 }
 
