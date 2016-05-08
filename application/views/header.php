@@ -4,7 +4,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="index.html">
-                <img src="../../assets/admin/layout4/img/logo-light.png" alt="logo" class="logo-default"/>
+                <img src="<?php echo base_url() . "assets/"; ?>img/logo-light.png" alt="logo" class="logo-default"/>
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -40,7 +40,7 @@
                             <span class="username username-hide-on-mobile">
                                 Nick </span>
                             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                            <img alt="" class="img-circle" src="../../assets/admin/layout4/img/avatar9.jpg"/>
+                            <img alt="" class="img-circle" src="<?php echo base_url() . "assets/"; ?>img/avatar9.jpg"/>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
