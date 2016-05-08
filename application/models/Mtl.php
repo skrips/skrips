@@ -39,6 +39,15 @@ Class Mtl extends CI_Model {
         $this->db->where('username',$username);
         return $this->db->get('user')->row();
     }
+    
+    function get_artikel(){
+        $username = $this->session->userdata('username');
+        $this->db->select('*');
+        $this->db->from('artikel a');
+        $this->db->join('topik b','b.id_topik = a.id_topik','left');
+        $this->db->where('username',$username);
+        return $this->db->get()->result();
+    }
 
 }
 

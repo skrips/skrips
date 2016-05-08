@@ -110,6 +110,92 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet box yellow">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-cogs"></i>Data Artikel
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            No.
+                                        </th>
+                                        <th>
+                                            Judul
+                                        </th>
+                                        <th>
+                                            Topik
+                                        </th>
+                                        <th>
+                                            Akses
+                                        </th>
+                                        <th>
+                                            Ringkasan
+                                        </th>
+                                        <th>
+                                            Sumber
+                                        </th>
+                                        <th>
+                                            Create Date
+                                        </th>
+                                        <th>
+                                            Latest Update
+                                        </th>
+                                        <th>
+                                            Action
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($artikel as $ar) {
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $no; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $ar->judul; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $ar->topik; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $ar->akses; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo substr($ar->isi, 3, 100); ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $ar->sumber; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $ar->create_date; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $ar->last_update; ?>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-success">Edit</a>
+                                                <a class="btn btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <?php $no++;
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div></div>
         <!-- END PAGE CONTENT-->
     </div>
 </div>

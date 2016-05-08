@@ -80,6 +80,7 @@ Class Ctl extends CI_Controller {
             redirect(base_url() . 'Ctl/user', 'refresh');
             die();
         } else {
+            $data['artikel'] = $this->Mtl->get_artikel();
             $data['akun'] = $this->Mtl->get_akun();
             $data['sidebar'] = "sidebar";
             $data['error'] = "";
@@ -97,6 +98,7 @@ Class Ctl extends CI_Controller {
             redirect(base_url() . 'Ctl/admin', 'refresh');
             die();
         } else {
+            $data['artikel'] = $this->Mtl->get_artikel();
             $data['akun'] = $this->Mtl->get_akun();
             $data['sidebar'] = "sidebar2";
             $data['error'] = "";
