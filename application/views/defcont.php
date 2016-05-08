@@ -183,11 +183,12 @@
                                                 <?php echo $ar->last_update; ?>
                                             </td>
                                             <td>
-                                                <a class="btn btn-success">Edit</a>
+                                                <a class="btn btn-success" href="<?php echo base_url() . "Ctl/ed_artikel/" . $ar->id_artikel; ?>">Edit</a>
                                                 <a class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
-                                        <?php $no++;
+                                        <?php
+                                        $no++;
                                     }
                                     ?>
                                 </tbody>
